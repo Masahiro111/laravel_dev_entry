@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Book;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +23,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+// 本を追加
+Route::post('/books', function (Request $request) {
+    //
+});
+
+// 本を削除
+Route::delete('/book/{book}', function (Book $book) {
+    //
+});
