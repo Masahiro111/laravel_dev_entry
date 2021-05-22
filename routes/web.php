@@ -25,12 +25,16 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+Route::get('/books', function () {
+    return view('books.index');
+})->middleware(['auth'])->name('books');
+
 // 本を追加
 Route::post('/books', function (Request $request) {
-    //
-});
+    return view('books.index');
+})->middleware(['auth']);
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {
     //
-});
+})->middleware(['auth']);
