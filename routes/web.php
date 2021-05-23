@@ -59,5 +59,6 @@ Route::post('/books', function (Request $request) {
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {
-    //
+    $book->delete();
+    return redirect(route('books'));
 })->middleware(['auth']);
