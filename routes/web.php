@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +26,35 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+
+
 Route::get('/books', function () {
     return view('books.index');
 })->middleware(['auth'])->name('books');
 
 // 本を追加
 Route::post('/books', function (Request $request) {
-    return view('books.index');
+
+    $validator = Validator::make($request->all(), [
+        'item_name' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $books = new Book;
+    $books->item_name = $request->item_name;
+    $books->item_number = '1';
+    $books->item_amount = '1000';
+    $books->published = '2017-03-07 00:00:00';
+    $books->save();
+
+    return redirect(route('books'));
 })
-    ->middleware(['auth'])
-    ->name('books');
+    ->middleware(['auth'])->name('books.create');
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {
