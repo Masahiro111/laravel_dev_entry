@@ -32,7 +32,9 @@ Route::get('/books', function () {
 // 本を追加
 Route::post('/books', function (Request $request) {
     return view('books.index');
-})->middleware(['auth']);
+})
+    ->middleware(['auth'])
+    ->name('books');
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {
