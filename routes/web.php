@@ -29,7 +29,8 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/books', function () {
-    return view('books.index');
+    $books = Book::orderBy('created_at', 'desc')->get();
+    return view('books.index', compact('books'));
 })->middleware(['auth'])->name('books');
 
 // 本を追加
