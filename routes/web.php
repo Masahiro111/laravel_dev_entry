@@ -38,6 +38,9 @@ Route::post('/books', function (Request $request) {
 
     $validator = Validator::make($request->all(), [
         'item_name' => 'required|max:255',
+        'item_number' => 'required|min:1|max:5',
+        'item_amount' => 'required|min:1|max:6',
+        'published' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -48,14 +51,20 @@ Route::post('/books', function (Request $request) {
 
     $books = new Book;
     $books->item_name = $request->item_name;
-    $books->item_number = '1';
-    $books->item_amount = '1000';
-    $books->published = '2017-03-07 00:00:00';
+    $books->item_number = $request->item_number;
+    $books->item_amount = $request->item_amount;
+    $books->published = $request->published;
     $books->save();
 
     return redirect(route('books'));
 })
     ->middleware(['auth'])->name('books.create');
+
+// 更新画面
+Route::post('/bookedit/{books}', function (Book $books) {
+    return view('bookedit', compact('books'));
+});
+
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {

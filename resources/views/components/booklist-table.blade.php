@@ -57,17 +57,25 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 Admin
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+            <td class="flex justify-end px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
-                <form action="{{ url('/book/'. $book->id )}}" method="POST">
+                <form action="{{ url('/bookedit/' . $book->id) }}" method="POST" class="ml-2">
+                    @csrf
+                    <button type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        EDIT
+                    </button>
+                </form>
+                
+                <form action="{{ url('/book/'. $book->id )}}" method="POST" class="ml-2">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    DELETE
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        DELETE
                     </button>
                 </form>
+
             </td>
         </tr>
         @endforeach

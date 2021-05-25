@@ -47,9 +47,23 @@
                                                 </div>
         
                                                 <div class="col-span-6 sm:col-span-3">
-                                                    <label for="last_name" class="block text-sm font-medium text-gray-700">Last
-                                                        name</label>
-                                                    <input type="text" name="last_name" id="last_name"
+                                                    <label for="item_amount" class="block text-sm font-medium text-gray-700">金額</label>
+                                                    <input type="text" name="item_amount" id="amount"
+                                                        autocomplete="10"
+                                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
+                                                </div>
+
+                                                <div class="col-span-6 sm:col-span-3">
+                                                    <label for="item_number"
+                                                        class="block text-sm font-medium text-gray-700">数</label>
+                                                    <input type="text" name="item_number" id="item_nubmer"
+                                                        autocomplete="given-name"
+                                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
+                                                </div>
+        
+                                                <div class="col-span-6 sm:col-span-3">
+                                                    <label for="published" class="block text-sm font-medium text-gray-700">公開日</label>
+                                                    <input type="date" name="published" id="published"
                                                         autocomplete="family-name"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
                                                 </div>
@@ -59,7 +73,7 @@
                                         <div class="px-4 py-3 bg-gray-50 sm:px-6">
                                             <button type="submit"
                                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                Save
+                                                &nbsp;Save&nbsp;
                                             </button>
                                         </div>
                                     </div>
