@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BooksController;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,72 +28,23 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 
-
-Route::get('/books', function () {
-    $books = Book::orderBy('created_at', 'desc')->get();
-    return view('books.index', compact('books'));
-})->middleware(['auth'])->name('books');
+Route::get('/books', [BooksController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('books');
 
 // 本を追加
-Route::post('/books', function (Request $request) {
-
-    $validator = Validator::make($request->all(), [
-        'item_name' => 'required|min:3|max:255',
-        'item_number' => 'required|min:1|max:5',
-        'item_amount' => 'required|min:1|max:6',
-        'published' => 'required',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $books = new Book;
-    $books->item_name = $request->item_name;
-    $books->item_number = $request->item_number;
-    $books->item_amount = $request->item_amount;
-    $books->published = $request->published;
-    $books->save();
-
-    return redirect(route('books'));
-})
-    ->middleware(['auth'])->name('books.create');
+Route::post('/books', [BooksController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('books.create');
 
 // 更新画面
-Route::post('/bookedit/{book}', function (Book $book) {
-    return view('books.bookedit', compact('book'));
-});
+Route::post('/bookedit/{book}', [BooksController::class, 'edit']);
 
 // 更新処理
-Route::post('/books/update', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'id' => 'required',
-        'item_name' => 'required|min:3|max:255',
-        'item_number' => 'required|min:1|max:5',
-        'item_amount' => 'required|min:1|max:6',
-        'published' => 'required',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $books = Book::find($request->id);
-    $books->item_name = $request->item_name;
-    $books->item_number = $request->item_number;
-    $books->item_amount = $request->item_amount;
-    $books->published = $request->published;
-    $books->save();
-
-    return redirect(route('books'));
-})->name('book.update');
+Route::post('/books/update', [BooksController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('book.update');
 
 // 本を削除
-Route::delete('/book/{book}', function (Book $book) {
-    $book->delete();
-    return redirect(route('books'));
-})->middleware(['auth']);
+Route::delete('/book/{book}', [BooksController::class, 'delete'])
+    ->middleware(['auth']);
