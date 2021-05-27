@@ -27,7 +27,7 @@ class BooksController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect(route('books'))
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -60,7 +60,7 @@ class BooksController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect('/bookedit/' . $request->id)
                 ->withInput()
                 ->withErrors($validator);
         }

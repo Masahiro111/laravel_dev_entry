@@ -38,7 +38,7 @@ Route::post('/books', [BooksController::class, 'store'])
     ->name('books.create');
 
 // 更新画面
-Route::post('/bookedit/{book}', [BooksController::class, 'edit']);
+Route::get('/bookedit/{book}', [BooksController::class, 'edit']);
 
 // 更新処理
 Route::post('/books/update', [BooksController::class, 'update'])
