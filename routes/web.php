@@ -37,7 +37,7 @@ Route::get('/books', function () {
 Route::post('/books', function (Request $request) {
 
     $validator = Validator::make($request->all(), [
-        'item_name' => 'required|max:255',
+        'item_name' => 'required|min:3|max:255',
         'item_number' => 'required|min:1|max:5',
         'item_amount' => 'required|min:1|max:6',
         'published' => 'required',
@@ -61,10 +61,35 @@ Route::post('/books', function (Request $request) {
     ->middleware(['auth'])->name('books.create');
 
 // 更新画面
-Route::post('/bookedit/{books}', function (Book $books) {
-    return view('bookedit', compact('books'));
+Route::post('/bookedit/{book}', function (Book $book) {
+    return view('books.bookedit', compact('book'));
 });
 
+// 更新処理
+Route::post('/books/update', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+        'item_name' => 'required|min:3|max:255',
+        'item_number' => 'required|min:1|max:5',
+        'item_amount' => 'required|min:1|max:6',
+        'published' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $books = Book::find($request->id);
+    $books->item_name = $request->item_name;
+    $books->item_number = $request->item_number;
+    $books->item_amount = $request->item_amount;
+    $books->published = $request->published;
+    $books->save();
+
+    return redirect(route('books'));
+})->name('book.update');
 
 // 本を削除
 Route::delete('/book/{book}', function (Book $book) {
