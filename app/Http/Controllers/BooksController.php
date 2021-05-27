@@ -39,7 +39,8 @@ class BooksController extends Controller
         $books->published = $request->published;
         $books->save();
 
-        return redirect(route('books'));
+        return redirect(route('books'))
+            ->with('message', '登録が完了しました。');;
     }
 
     // 更新画面のひょうじ　
@@ -72,7 +73,8 @@ class BooksController extends Controller
         $books->published = $request->published;
         $books->save();
 
-        return redirect(route('books'));
+        return redirect(route('books'))
+            ->with('message', '更新が完了しました。');
     }
 
     // 削除
