@@ -13,6 +13,7 @@ class Book extends Model
         'item_name',
         'item_number',
         'item_amount',
+        'item_img',
         'published',
     ];
 }

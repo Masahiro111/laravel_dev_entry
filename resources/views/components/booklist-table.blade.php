@@ -38,6 +38,7 @@
                         <div class="text-sm font-medium text-gray-900">
                             {{ $book->item_name}}
                         </div>
+                        <p><img src="{{Storage::url('uploads/' . $book->item_img)}}" width="100" alt=""></p>
                         <div class="text-sm text-gray-500">
                             jane.cooper@example.com
                         </div>

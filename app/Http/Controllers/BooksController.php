@@ -6,6 +6,7 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 class BooksController extends Controller
 {
@@ -17,7 +18,25 @@ class BooksController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
-        return view('books.index', compact('books'));
+        $converter = new GithubFlavoredMarkdownConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+
+        $mark_to_html = $converter->convertToHtml('
+# Hello World!
+1. 住みたい町
+    1. 鎌倉
+    1. 神楽坂
+    1. 荻窪
+1. 部屋の条件
+    1. 騒音
+    1. ペット可
+    1. 駅から徒歩3分
+    ');
+
+
+        return view('books.index', compact('books', 'mark_to_html'));
     }
 
     // 登録
@@ -36,11 +55,20 @@ class BooksController extends Controller
                 ->withErrors($validator);
         }
 
+        $file = $request->file('item_img');
+        if (!empty($file)) {
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('../public/storage/uploads', $filename);
+        } else {
+            $filename = "";
+        }
+
         $books = new Book;
         $books->user_id = Auth::user()->id;
         $books->item_name = $request->item_name;
         $books->item_number = $request->item_number;
         $books->item_amount = $request->item_amount;
+        $books->item_img = $filename;
         $books->published = $request->published;
         $books->save();
 

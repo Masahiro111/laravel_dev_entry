@@ -19,6 +19,8 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         本のタイトル
                     </div>
+
+                    <p>{!! $mark_to_html !!}</p>
         
                     <!-- バリデーションエラーの表示に使用 -->
                     <div>
@@ -37,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="mt-5 md:mt-0 md:col-span-2">
-                                <form action="{{route('books')}}" method="POST">
+                                <form action="{{route('books')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="shadow overflow-hidden sm:rounded-md">
                                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -65,12 +67,16 @@
                                                         autocomplete="given-name"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
                                                 </div>
-        
+
                                                 <div class="col-span-6 sm:col-span-3">
                                                     <label for="published" class="block text-sm font-medium text-gray-700">公開日</label>
-                                                    <input type="date" name="published" id="published"
-                                                        autocomplete="family-name"
+                                                    <input type="date" name="published" id="published" autocomplete="family-name"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
+                                                </div>
+                                                
+                                                <div class="col-span-6 sm:col-span-3">
+                                                    <label for="item_img" class="block text-sm font-medium text-gray-700">ファイルのアップロード</label>
+                                                    <input type="file" name="item_img" id="item_img">
                                                 </div>
         
                                             </div>
