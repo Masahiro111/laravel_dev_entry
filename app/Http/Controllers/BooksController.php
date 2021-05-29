@@ -2,28 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\TwitterHandleParser;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use League\CommonMark\GithubFlavoredMarkdownConverter;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
+use SimonVomEyser\CommonMarkExtension\LazyImageExtension;
 
 class BooksController extends Controller
 {
 
     // 一覧表示
-    public function index()
+    public function index(Request $request)
     {
+
         $books = Book::where('user_id', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
-        $converter = new GithubFlavoredMarkdownConverter([
-            'html_input' => 'strip',
-            'allow_unsafe_links' => false,
-        ]);
+        $this->environment = Environment::createCommonMarkEnvironment();
+        $this->environment->addExtension(new LazyImageExtension());
+        $this->environment->addInlineParser(new TwitterHandleParser());
+        $converter = new CommonMarkConverter([], $this->environment);
 
         $mark_to_html = $converter->convertToHtml('
+![alt text](/path/to/image.jpg)
 # Hello World!
 1. 住みたい町
     1. 鎌倉
