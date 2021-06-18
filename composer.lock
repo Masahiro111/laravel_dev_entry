@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3a9fc0c3c7844314cb7dc96b65e38c7",
+    "content-hash": "dd05b685b193754fe4f888bd91fe997e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -421,6 +421,44 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "elgigi/commonmark-emoji",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElGigi/CommonMarkEmoji.git",
+                "reference": "e64a483f891852db2f0ecf2066fab90fa531079a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElGigi/CommonMarkEmoji/zipball/e64a483f891852db2f0ecf2066fab90fa531079a",
+                "reference": "e64a483f891852db2f0ecf2066fab90fa531079a",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^1.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0 || ^9.0"
+            },
+            "type": "commonmark-extension",
+            "autoload": {
+                "psr-4": {
+                    "ElGigi\\CommonMarkEmoji\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CommonMark extension adds UTF-8 emoji with Github tag for the `league/commonmark` PHP Markdown parsing engine, based on the CommonMark spec.",
+            "support": {
+                "issues": "https://github.com/ElGigi/CommonMarkEmoji/issues",
+                "source": "https://github.com/ElGigi/CommonMarkEmoji/tree/v1.0.0"
+            },
+            "time": "2020-08-13T12:06:40+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -4932,6 +4970,52 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "zoon/commonmark-ext-youtube-iframe",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zoonru/commonmark-ext-youtube-iframe.git",
+                "reference": "9af38021ec27ee1d1d971465075231640a6d562f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zoonru/commonmark-ext-youtube-iframe/zipball/9af38021ec27ee1d1d971465075231640a6d562f",
+                "reference": "9af38021ec27ee1d1d971465075231640a6d562f",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^1.0",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "commonmark-extension",
+            "autoload": {
+                "psr-4": {
+                    "Zoon\\CommonMark\\Ext\\YouTubeIframe\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Extension for league/commonmark to replace youtube link with iframe",
+            "homepage": "https://github.com/zoonru/commonmark-ext-youtube-iframe",
+            "keywords": [
+                "commonmark",
+                "extension",
+                "iframe",
+                "markdown",
+                "youtube"
+            ],
+            "support": {
+                "issues": "https://github.com/zoonru/commonmark-ext-youtube-iframe/issues",
+                "source": "https://github.com/zoonru/commonmark-ext-youtube-iframe/tree/1.1.2"
+            },
+            "time": "2021-03-17T10:58:18+00:00"
         }
     ],
     "packages-dev": [

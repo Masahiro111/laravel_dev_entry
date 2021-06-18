@@ -20,7 +20,10 @@
                         本のタイトル
                     </div>
 
+                    <div class="p-8 markdown-area">
                     {!! $mark_to_html !!}
+                    </div>
+
         
                     <!-- バリデーションエラーの表示に使用 -->
                     <div>
