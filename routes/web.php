@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\MarktestController;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+Route::get('/marks', [MarktestController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('marks');
 
 Route::get('/books', [BooksController::class, 'index'])
     ->middleware(['auth'])
