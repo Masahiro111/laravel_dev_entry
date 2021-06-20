@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd05b685b193754fe4f888bd91fe997e",
+    "content-hash": "8b1da6e79da108a15c90f0270fd9c99b",
     "packages": [
+        {
+            "name": "8fold/commonmark-accordions",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/8fold/commonmark-accordions.git",
+                "reference": "92a6db9b65aadeb8a5e53a5146df2363d950145a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/8fold/commonmark-accordions/zipball/92a6db9b65aadeb8a5e53a5146df2363d950145a",
+                "reference": "92a6db9b65aadeb8a5e53a5146df2363d950145a",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "~1.5",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eightfold\\CommonMarkAccordions\\": "./src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Bruce",
+                    "email": "josh@8fold.pro"
+                }
+            ],
+            "description": "An extension of PHP League's CommonMark library to enable abbreviation usage.",
+            "support": {
+                "issues": "https://github.com/8fold/commonmark-accordions/issues",
+                "source": "https://github.com/8fold/commonmark-accordions/tree/1.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/8fold",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/joshbruce",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-01-03T00:31:59+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",

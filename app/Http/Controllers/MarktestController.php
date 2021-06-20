@@ -25,7 +25,6 @@ class MarktestController extends Controller
                 $this->environment->addExtension(new EmojiExtension());
                 $this->environment->addExtension(new AttributesExtension());
                 $this->environment->addExtension(new FootnoteExtension());
-                $this->environment->addExtension(new MarkupExtension());
 
                 $this->environment->addInlineParser(new TwitterHandleParser());
 
