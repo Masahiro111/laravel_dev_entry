@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Library\MarkParser;
 use App\Library\Markup\MarkupExtension;
 use App\Library\TwitterHandleParser;
+use Eightfold\CommonMarkAccordions\Accordion;
+use Eightfold\CommonMarkAccordions\AccordionExtension;
+use Eightfold\CommonMarkAccordions\AccordionGroupExtension;
 use ElGigi\CommonMarkEmoji\EmojiExtension;
 use Illuminate\Http\Request;
 use League\CommonMark\CommonMarkConverter;
@@ -20,11 +22,12 @@ class MarktestController extends Controller
         public function index(Request $request)
         {
                 $this->environment = Environment::createGFMEnvironment();
-                $this->environment->addInlineParser(new MarkParser());
                 $this->environment->addExtension(new LazyImageExtension());
                 $this->environment->addExtension(new EmojiExtension());
                 $this->environment->addExtension(new AttributesExtension());
                 $this->environment->addExtension(new FootnoteExtension());
+                $this->environment->addExtension(new MarkupExtension());
+                // $this->environment->addExtension(new AccordionExtension());
 
                 $this->environment->addInlineParser(new TwitterHandleParser());
 
@@ -35,6 +38,35 @@ class MarktestController extends Controller
 
                 $mark_to_html = $converter->convertToHtml('
 e>> data <<
+
+|+ ## パナソニックが発売しているノートＰＣブランドはどれでしょう
+( ) VAIO{{VAIOはVAIO株式会社から発売されているPCブランドです}}
+( ) dynabook{{dynabookは東芝から発売されているＰＣブランドです}}
+( ) FMV{{FMVは富士通から発売されているPCブランドです}}
+(x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
+
+|+ ## Markdown accordions by 8fold
+- **Pro:** Simple syntax to achieve richer output.
+- **Con:** One more package to keep up to date.
+
+|+ ## Markdown accordions by 8fold
+- **Pro:** Simple syntax to achieve richer output.
+- **Con:** One more package to keep up to date.
+
+|+ ## Markdown accordions by 8fold
+- **Pro:** Simple syntax to achieve richer output.
+- **Con:** One more package to keep up to date.
+
+
+---
+
+The accordion can accept any markdown that is parsable by your implementation of the CommonMark processor from The PHP League.
+
+The accordions can be used independently, or grouped.
+
+When grouped and using the provided JavaScript, only one accordion will be allowed to be open at a time.
++markdown-accordions-by-ef|
+
 
 Duis mollis, est non commodo luctus, nisi erat porttitor ligula[^note1], eget lacinia odio.
 
