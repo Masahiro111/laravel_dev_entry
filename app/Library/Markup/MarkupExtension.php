@@ -13,7 +13,7 @@ class MarkupExtension implements ExtensionInterface
 {
     public function register(ConfigurableEnvironmentInterface $environment)
     {
-        $environment->addBlockParser(new MarkupParser(), 1);
+        $environment->addBlockParser(new MarkupParser(), 100);
         $environment->addBlockRenderer(Markup::class, new MarkupRenderer());
     }
 }

@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "8fold/commonmark-accordions": "^1.0",
         "elgigi/commonmark-emoji": "^1.0",
+        "erusev/parsedown": "^1.7",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

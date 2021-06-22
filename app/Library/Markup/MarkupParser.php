@@ -14,15 +14,16 @@ class MarkupParser implements BlockParserInterface
     {
         $c = $cursor->getCharacter();
         $cPlus = $cursor->peek();
-        if ($c !== "|" and $c !== "+" and $cPlus !== "|" and $cPlus !== "+") {
-            // only pipe or plus can start
+        $cDouble = $c . $cPlus;
+        if ($cDouble !== ">>") {
+            // only ">" can start
             return false;
         }
 
-        $startAccordionRegex = "/^\|\+ #{2,6} (.)*/";
+        $regex = "/^\>\>\s(.*?)\s\<\</";
         // ddd($startAccordionRegex);
-        $accordionStart = $cursor->match($startAccordionRegex);
-        if (empty($accordionStart)) {
+        $result = $cursor->match($regex);
+        if (empty($result)) {
             return false;
         }
         $accordion = new Markup($context, $cursor);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Library\TwitterHandleParser;
 use App\Library\MarkParser;
+use App\Library\Markup\MarkupExtension;
 use App\Models\Book;
 use ElGigi\CommonMarkEmoji\EmojiExtension;
 use Illuminate\Http\Request;
@@ -29,12 +30,20 @@ class BooksController extends Controller
                 $this->environment->addInlineParser(new MarkParser());
                 $this->environment->addExtension(new LazyImageExtension());
                 $this->environment->addExtension(new EmojiExtension());
+                $this->environment->addExtension(new MarkupExtension());
 
                 $this->environment->addInlineParser(new TwitterHandleParser());
 
                 $converter = new GithubFlavoredMarkdownConverter([], $this->environment);
 
                 $mark_to_html = $converter->convertToHtml('
+
+>> パナソニックが発売しているノートＰＣブランドはどれでしょう <<
+( ) あ*VAIO* https://sony.jp 
+( ) ~~dynabook~~ {{dynabookは東芝から発売されているＰＣブランドです}}
+( ) FMV{{FMVは富士通から発売されているPCブランドです}}
+(x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
+
 
 # Hello World!
 1. 住みたい町
@@ -64,7 +73,7 @@ class BooksController extends Controller
 ( ) 京成幕張駅{{京成幕張駅は京成線の駅です}}
 
 >> Panasonicが発売しているノートＰＣブランドはどれでしょう <<
-( ) VAIO{{VAIOはVAIO株式会社から発売されているPCブランドです}}
+( ) VAIOs{{ **VAIO** は **VAIO** 株式会社から発売されているPCブランドです}}
 ( ) dynabook{{dynabookは東芝から発売されているＰＣブランドです}}
 ( ) FMV{{FMVは富士通から発売されているPCブランドです}}
 (x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
