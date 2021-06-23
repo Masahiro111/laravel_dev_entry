@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Library\TwitterHandleParser;
 use App\Library\MarkParser;
 use App\Library\Markup\MarkupExtension;
+use App\Library\QuizObject\QuizObjectExtension;
 use App\Models\Book;
 use ElGigi\CommonMarkEmoji\EmojiExtension;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class BooksController extends Controller
                 $this->environment = Environment::createGFMEnvironment();
                 $this->environment->addInlineParser(new MarkParser());
                 $this->environment->addExtension(new LazyImageExtension());
-                $this->environment->addExtension(new EmojiExtension());
+                // $this->environment->addExtension(new EmojiExtension());
                 $this->environment->addExtension(new MarkupExtension());
+                $this->environment->addExtension(new QuizObjectExtension());
 
                 $this->environment->addInlineParser(new TwitterHandleParser());
 
@@ -39,11 +41,18 @@ class BooksController extends Controller
                 $mark_to_html = $converter->convertToHtml('
 
 >> パナソニックが発売しているノートＰＣブランドはどれでしょう <<
-( ) あ*VAIO* https://sony.jp 
+( ) あ*VAIO* https://sony.jp
 ( ) ~~dynabook~~ {{dynabookは東芝から発売されているＰＣブランドです}}
-( ) FMV{{FMVは富士通から発売されているPCブランドです}}
+( ) FMV
 (x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
+>>
 
+| TH 左寄せ | TH 中央寄せ | TH 右寄せ |
+| :--- | :---: | ---: |
+| TD | TD | TD |
+| TD | TD | TD |
+
+:+1:
 
 # Hello World!
 1. 住みたい町

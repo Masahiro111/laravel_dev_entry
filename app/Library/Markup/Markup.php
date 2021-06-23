@@ -98,18 +98,14 @@ class Markup extends AbstractBlock
 
     public function matchesNextLine(Cursor $cursor): bool
     {
-        // 回答かどうかをマッチング
-        $regex = "/^(\( \)|\(x\)) .+/";
-        $matchFlag = $cursor->match($regex);
+        $endContainerRegex = "/^\>\>/";
+        $containerEnd = $cursor->match($endContainerRegex);
 
-        // もしマッチしたら新しい回答の行を続行
-        if ($matchFlag) {
-            // ddd($matchFlag);
-            $this->contentLists[] =  $matchFlag;
+        // $lines = $container->getStrings();
 
+        if (empty($containerEnd)) {
             return true;
         }
-        // $this->accordionId = substr($cursor->getLine(), 1, -1);
         return false;
     }
 
