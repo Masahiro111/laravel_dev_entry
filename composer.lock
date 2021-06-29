@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6888fb3e6886b759ca3b7466939edf96",
+    "content-hash": "b2fc66ff09c2cd4a89ef6852c97ead47",
     "packages": [
+        {
+            "name": "8fold/commonmark-abbreviations",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/8fold/commonmark-abbreviations.git",
+                "reference": "6b25eaa8281368cb9d96d56bc610ffb060cadf18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/8fold/commonmark-abbreviations/zipball/6b25eaa8281368cb9d96d56bc610ffb060cadf18",
+                "reference": "6b25eaa8281368cb9d96d56bc610ffb060cadf18",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "~1.5",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "8fold/php-shoop": "^0.10.17@dev",
+                "phpunit/phpunit": "^9.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eightfold\\CommonMarkAbbreviations\\": "./src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Bruce",
+                    "email": "josh@8fold.pro"
+                }
+            ],
+            "description": "An extension of PHP League's CommonMark library to enable abbreviation usage.",
+            "support": {
+                "issues": "https://github.com/8fold/commonmark-abbreviations/issues",
+                "source": "https://github.com/8fold/commonmark-abbreviations/tree/1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/8fold",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/joshbruce",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-05-11T00:23:49+00:00"
+        },
         {
             "name": "8fold/commonmark-accordions",
             "version": "1.0.4",

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Library\TwitterHandleParser;
 use App\Library\MarkParser;
 use App\Library\Markup\MarkupExtension;
+use App\Library\Mytag\MytagExtention;
 use App\Library\QuizObject\QuizObjectExtension;
 use App\Models\Book;
 use ElGigi\CommonMarkEmoji\EmojiExtension;
@@ -33,6 +34,7 @@ class BooksController extends Controller
                 // $this->environment->addExtension(new EmojiExtension());
                 $this->environment->addExtension(new MarkupExtension());
                 $this->environment->addExtension(new QuizObjectExtension());
+                $this->environment->addExtension(new MytagExtention());
 
                 $this->environment->addInlineParser(new TwitterHandleParser());
 
@@ -46,6 +48,11 @@ class BooksController extends Controller
 ( ) FMV
 (x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
 >>
+
+
+[.8fold](Eigtfold)
+
+[^World Wide Web](WWW) はどの略？
 
 | TH 左寄せ | TH 中央寄せ | TH 右寄せ |
 | :--- | :---: | ---: |

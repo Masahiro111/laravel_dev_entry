@@ -34,6 +34,8 @@ class MarktestController extends Controller
 [x] Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
 +1|
 
+[World Wide Web](WWW) はどの略？
+
 escaped \*emphasis\*.
 
 <a href="">a</a>
