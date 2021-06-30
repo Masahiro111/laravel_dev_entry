@@ -6,8 +6,6 @@ namespace App\Library\TableTest;
 
 use League\CommonMark\ConfigurableEnvironmentInterface;
 use League\CommonMark\Extension\ExtensionInterface;
-use League\CommonMark\Extension\Table\TableParser;
-use League\CommonMark\Extension\Table\TableRenderer;
 
 final class TableExtension implements ExtensionInterface
 {
