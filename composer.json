@@ -16,6 +16,7 @@
         "laravel/breeze": "^1.2",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "ows/commonmark-sup-sub-extensions": "^2.0",
         "simonvomeyser/commonmark-ext-lazy-image": "^1.2",
         "zoon/commonmark-ext-youtube-iframe": "^1.1"
     },

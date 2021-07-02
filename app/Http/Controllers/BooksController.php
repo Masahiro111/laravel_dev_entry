@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Library\TwitterHandleParser;
-use App\Library\MarkParser;
-use App\Library\Markup\MarkupExtension;
-use App\Library\Mytag\MytagExtention;
-use App\Library\QuizObject\QuizObjectExtension;
+
 use App\Models\Book;
+use App\Library\Object\ObjectExtension;
 use ElGigi\CommonMarkEmoji\EmojiExtension;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,14 +26,16 @@ class BooksController extends Controller
                         ->paginate(3);
 
                 $this->environment = Environment::createGFMEnvironment();
-                $this->environment->addInlineParser(new MarkParser());
+                // $this->environment->addInlineParser(new MarkParser());
                 $this->environment->addExtension(new LazyImageExtension());
                 // $this->environment->addExtension(new EmojiExtension());
-                $this->environment->addExtension(new MarkupExtension());
-                $this->environment->addExtension(new QuizObjectExtension());
-                $this->environment->addExtension(new MytagExtention());
+                // $this->environment->addExtension(new MarkupExtension());
+                // $this->environment->addExtension(new QuizObjectExtension());
+                // $this->environment->addExtension(new MytagExtention());
+                // $this->environment->addExtension(new MytagExtention());
+                // $this->environment->addExtension(new Mytag2Extention());
 
-                $this->environment->addInlineParser(new TwitterHandleParser());
+                // $this->environment->addInlineParser(new TwitterHandleParser());
 
                 $converter = new GithubFlavoredMarkdownConverter([], $this->environment);
 
@@ -49,6 +48,12 @@ class BooksController extends Controller
 (x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
 >>
 
+{{ Object ID
+        Any markdown goes here.
+        Some more
+          * List 1
+          * List 2
+}}
 
 [.8fold](Eigtfold)
 
