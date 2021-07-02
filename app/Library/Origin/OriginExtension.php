@@ -14,7 +14,7 @@ use App\Library\Origin\OriginBlock;
 use App\Library\Origin\OriginParser;
 use App\Library\Origin\OriginRenderer;
 
-class MytagExtension implements ExtensionInterface
+class OriginExtension implements ExtensionInterface
 {
     public function register(ConfigurableEnvironmentInterface $environment)
     {

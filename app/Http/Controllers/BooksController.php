@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Library\Mytag\MytagExtension;
+use App\Library\Origin\OriginExtension;
 // use App\Library\Mytag\MytagExtention;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class BooksController extends Controller
                 // $this->environment->addExtension(new QuizObjectExtension());
                 // $this->environment->addExtension(new MytagExtention());
                 $this->environment->addExtension(new MytagExtension());
+                $this->environment->addExtension(new OriginExtension());
                 // $this->environment->addExtension(new Mytag2Extention());
 
                 // $this->environment->addInlineParser(new TwitterHandleParser());
@@ -47,11 +49,18 @@ class BooksController extends Controller
 (x) Let\'s note{{Let\'s noteはPanasonicから発売されているPCブランドです}}
 >>
 
-{{ Object ID
-        Any markdown goes here.
-        Some more
-          * List 1
-          * List 2
+{{ にゃはろ～(=ﾟωﾟ)ﾉ
+Any ~~markdown~~ **goes** here.
+Some more
+- List 1
+- List 2
+- リスト1
+    - ネスト リスト1_1
+        - ネスト リスト1_1_1
+        - ネスト リスト1_1_2
+    - ネスト リスト1_2
+- リスト2
+- リスト3
 }}
 
 [.8fold](Eigtfold)

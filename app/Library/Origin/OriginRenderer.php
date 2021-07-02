@@ -11,8 +11,8 @@ class OriginRenderer implements BlockRendererInterface
 {
     public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
     {
-        // $span = sprintf('<span>%s</span>', $block->getObjectId());
-        $span = sprintf('<span>a</span>');
+        $span = sprintf('<h2>%s</h2>', $block->getObjectId());
+        // $span = sprintf('<span>a</span>');
         $contents = $htmlRenderer->renderBlocks($block->children());
 
         return new HtmlElement(

@@ -12,7 +12,7 @@ use League\CommonMark\HtmlElement;
 use League\CommonMark\Block\Element\AbstractBlock;
 
 
-class ObjectBlock extends AbstractBlock
+class OriginBlock extends AbstractBlock
 {
     private $objectId;
 
@@ -43,6 +43,11 @@ class ObjectBlock extends AbstractBlock
 
     public function matchesNextLine(Cursor $cursor): bool
     {
+        $endContainerRegex = "/^}}/";
+        $containerEnd = $cursor->match($endContainerRegex);
+        if ($containerEnd) {
+            return false;
+        }
         return true;
     }
 }
