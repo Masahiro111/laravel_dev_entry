@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Library\Mytag\MytagExtension;
+// use App\Library\Mytag\MytagExtention;
 use App\Models\Book;
-use App\Library\Object\ObjectExtension;
-use ElGigi\CommonMarkEmoji\EmojiExtension;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +31,7 @@ class BooksController extends Controller
                 // $this->environment->addExtension(new MarkupExtension());
                 // $this->environment->addExtension(new QuizObjectExtension());
                 // $this->environment->addExtension(new MytagExtention());
-                // $this->environment->addExtension(new MytagExtention());
+                $this->environment->addExtension(new MytagExtension());
                 // $this->environment->addExtension(new Mytag2Extention());
 
                 // $this->environment->addInlineParser(new TwitterHandleParser());
